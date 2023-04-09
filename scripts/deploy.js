@@ -3,13 +3,13 @@ const hre = require("hardhat");
 async function main() {
   const [signer] = await hre.ethers.getSigners();
 
-  const ERC20 = await hre.ethers.getContractFactory("MShop", signer);
-  const erc20 = await ERC20.deploy();
+  const MShop = await hre.ethers.getContractFactory("MShop", signer);
+  const mshop = await MShop.deploy();
 
-  await erc20.deployed();
+  await mshop.deployed();
 
-  console.log(erc20.address);
-  console.log(await erc20.token());
+  console.log("MShop deployed: ", mshop.address);
+  console.log("Token deployed: ", await mshop.token());
 }
 
 main().catch((error) => {
